@@ -139,7 +139,7 @@
   .bonus-price .free{background:var(--mint);color:var(--green-dark);font-weight:800;padding:.15rem .55rem;border-radius:999px;font-size:.72rem;}
 
   /* Planos */
-  .section-dark{background:var(--green-darker);color:#fff;}
+  .section-dark{background:var(--green-darker);color:#fff;scroll-margin-top:3rem;}
   .section-dark .eyebrow-title h2{color:#fff;}
   .plans-grid{display:flex;flex-direction:column;gap:1.2rem;}
   .plan-card{
@@ -240,7 +240,7 @@
 
 
 
-<div class="promo-banner">⏰ A promoção dessa página acaba no dia 27/06/2026</div>
+<div class="promo-banner">⏰ A promoção dessa página acaba hoje, dia <span id="promo-date">--/--/----</span></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -251,7 +251,7 @@
       <span class="price-old"><span>De R$97,00</span> por apenas</span>
       <span class="price-main">R$10</span>
     </div>
-    <a href="https://wa.me/5512981825412?text=Oi%20Beatriz!%20Quero%20garantir%20meu%20kit%20de%20receitas%20%F0%9F%98%8D" class="btn btn-pulse">
+    <a href="#planos" class="btn btn-pulse">
       💬 QUERO AS 200 RECEITAS
     </a>
     <div class="trust-row">
@@ -411,7 +411,7 @@
 </section>
 
 <!-- PLANOS -->
-<section class="section-dark">
+<section class="section-dark" id="planos">
   <div class="container">
     <div class="eyebrow-title"><h2 style="text-align:center;margin-bottom:1.3rem;">Escolha seu Plano</h2></div>
     <div class="plans-grid">
@@ -630,6 +630,14 @@
   function toggleFaq(btn){
     btn.parentElement.classList.toggle('active');
   }
+  (function(){
+    var d = new Date();
+    var dia = String(d.getDate()).padStart(2,'0');
+    var mes = String(d.getMonth()+1).padStart(2,'0');
+    var ano = d.getFullYear();
+    var els = document.querySelectorAll('#promo-date');
+    els.forEach(function(el){ el.textContent = dia+'/'+mes+'/'+ano; });
+  })();
 </script>
 </body>
 </html>
